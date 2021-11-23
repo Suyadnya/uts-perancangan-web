@@ -4,20 +4,14 @@
     <meta charset="UTF-8">
 </head>
 <body>
-<div class="maintext">
-<h2> Ciluk BAA</h2>
+<div id="ac-wrapper">
+    <div id="popup">
+        <center>
+            <img src="pages/assetes/steven.jpeg" alt="popup">
+        </center>
+    </div>
 </div>
-<div id="boxes">
-<img src="pages/assets/steven.jpeg" alt="popup">
-<div style="top: 50%; left: 50%; display: none;" id="dialog" class="window"> 
-<div id="san">
-<a href="#" class="close agree"><img src="close-icon.png" width="25" style="float:right; margin-right: -25px; margin-top: -20px;"></a>
-<img src="san-web-corner.png" width="450">
-</div>
-</div>
-<div style="width: 2478px; font-size: 32pt; color:white; height: 1202px; display: none; opacity: 0.4;" id="mask"></div>
-</div>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script> 
+
 <frameset rows="20%,7%,67%,10%,*" border="0">
 	<frame name="atas" src="top.html" />
 	<frame name="menu" scrolling="no" src="menu.html" />
@@ -27,28 +21,35 @@
 </body>
 </html> 
 <script>
-$(document).ready(function() { 
-  var id = '#dialog';
-  var maskHeight = $(document).height();
-  var maskWidth = $(window).width();
-  $('#mask').css({'width':maskWidth,'height':maskHeight}); 
-  $('#mask').fadeIn(500); 
-  $('#mask').fadeTo("slow",0.9); 
-        var winH = $(window).height();
-  var winW = $(window).width();
-        $(id).css('top',  winH/2-$(id).height()/2);
-  $(id).css('left', winW/2-$(id).width()/2);
-     $(id).fadeIn(2000);  
-     $('.window .close').click(function (e) {
-  e.preventDefault();
-  $('#mask').hide();
-  $('.window').hide();
-     });  
-     $('#mask').click(function () {
-  $(this).hide();
-  $('.window').hide();
- });  
- 
+	$(document).ready(function(){
+   setTimeout(function(){
+      PopUp();
+   },5000); // 5000 to load it after 5 seconds from page load
 });
 </script>
+<style>
+#ac-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,.6);
+    z-index: 1001;
+}
 
+#popup {
+    width: 555px;
+    height: 375px;
+    background: #FFFFFF;
+    border: 5px solid #000;
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    box-shadow: #64686e 0px 0px 3px 3px;
+    -moz-box-shadow: #64686e 0px 0px 3px 3px;
+    -webkit-box-shadow: #64686e 0px 0px 3px 3px;
+    position: relative;
+    top: 150px; left: 375px;
+}
+</style>
