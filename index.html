@@ -1,29 +1,59 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<title></title>
+    <meta charset="UTF-8">
+    <title>Document</title>
 </head>
+<body>
+<div id="popup">
+
+    <!-- and here comes the image -->
+    <img src="page/assets/steven.jpeg" alt="popup">
+
+        <!-- Now this is the button which closes the popup-->
+        <button id="close">Close button</button>
+
+        <!-- and finally we close the POPUP FRAME-->
+        <!-- everything on it will show up within the popup so you can add more things not just an image -->
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 <frameset rows="20%,7%,67%,10%,*" border="0">
 	<frame name="atas" src="top.html" />
 	<frame name="menu" scrolling="no" src="menu.html" />
 	<frame name="isi" src="welcome.html" />
 	<frame name="bawah" src="bottom.html" />
 </frameset>
+</body>
 </html> 
 <script>
-	$(document).ready(function(){
-  var imgURLs = [ "page/assets/steven.jpeg"
-  ];
-  var randomIndex = Math.floor(Math.random() * imgURLs.length);
-  var imgURL = imgURLs[randomIndex];
+	//with this first line we're saying: "when the page loads (document is ready) run the following script"
+$(document).ready(function () {
 
-  
-  
-  setTimeout(function(){
-      lightcase.start({
-        href: imgURL,
-        // more options like width, height, etc.
-      });
-   },1000); // 1000 to load it after 1 second from page load
-  
+    //select the POPUP FRAME and show it
+    $("#popup").hide().fadeIn(1000);
+
+    //close the POPUP if the button with id="close" is clicked
+    $("#close").on("click", function (e) {
+        e.preventDefault();
+        $("#popup").fadeOut(1000);
+    });
+
 });
+	
 </script>
+
+<style> 
+/*we need to style the popup with CSS so it is placed as a common popup does*/
+    #popup {
+            display:none;
+            position:absolute;
+            margin:0 auto;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+    }
+
+</style>
