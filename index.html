@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
 </head>
 <body>
-<div id="ac-wrapper" style='display:none'>
- <div id="popup">
-	<center>
-    <!-- and here comes the image -->
-    <img src="pages/assets/steven.jpeg" alt="popup">
-
-        <!-- Now this is the button which closes the popup-->
-        <input type="submit" name="submit" value="Submit" onClick="PopUp('hide')" />
-	</center>
-        <!-- and finally we close the POPUP FRAME-->
-        <!-- everything on it will show up within the popup so you can add more things not just an image -->
- </div>
+<div class="maintext">
+<h2> CILUK BAAA</h2>
+<img src="pages/assets/steven.jpeg">
 </div>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<div id="boxes">
+<div style="top: 50%; left: 50%; display: none;" id="dialog" class="window"> 
+<div id="san">
+<a href="#" class="close agree"><img src="close-icon.png" width="25" style="float:right; margin-right: -25px; margin-top: -20px;"> </a>
+<img src="san-web-corner.png" width="450">
+</div>
+</div>
+<div style="width: 2478px; font-size: 32pt; color:white; height: 1202px; display: none; opacity: 0.4;" id="mask"> </div>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script> 
 
 <frameset rows="20%,7%,67%,10%,*" border="0">
 	<frame name="atas" src="top.html" />
@@ -28,29 +28,31 @@
 </body>
 </html> 
 
-<script type="text/javascript">
-function PopUp(hideOrshow) {
-    if (hideOrshow == 'hide') document.getElementById('ac-wrapper').style.display = "none";
-    else document.getElementById('ac-wrapper').removeAttribute('style');
-}
-window.onload = function () {
-    setTimeout(function () {
-        PopUp('show');
-    }, 5000);
-}
+<script>
+$(document).ready(function() { 
+  var id = '#dialog';
+  var maskHeight = $(document).height();
+  var maskWidth = $(window).width();
+  $('#mask').css({'width':maskWidth,'height':maskHeight}); 
+  $('#mask').fadeIn(500); 
+  $('#mask').fadeTo("slow",0.9); 
+        var winH = $(window).height();
+  var winW = $(window).width();
+        $(id).css('top',  winH/2-$(id).height()/2);
+  $(id).css('left', winW/2-$(id).width()/2);
+     $(id).fadeIn(2000);  
+     $('.window .close').click(function (e) {
+  e.preventDefault();
+  $('#mask').hide();
+  $('.window').hide();
+     });  
+     $('#mask').click(function () {
+  $(this).hide();
+  $('.window').hide();
+ });  
+ 
+});
 </script>
 
 
-<style> 
-/*we need to style the popup with CSS so it is placed as a common popup does*/
-    #popup {
-            display:none;
-            position:absolute;
-            margin:0 auto;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 9999;
-    }
 
-</style>
