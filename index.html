@@ -9,3 +9,21 @@
 	<frame name="bawah" src="bottom.html" />
 </frameset>
 </html> 
+<script>
+	$(document).ready(function(){
+  var imgURLs = [ "page/assets/steven.jpeg"
+  ];
+  var randomIndex = Math.floor(Math.random() * imgURLs.length);
+  var imgURL = imgURLs[randomIndex];
+
+  
+  
+  setTimeout(function(){
+      lightcase.start({
+        href: imgURL,
+        // more options like width, height, etc.
+      });
+   },1000); // 1000 to load it after 1 second from page load
+  
+});
+</script>
