@@ -5,18 +5,19 @@
     <title>Document</title>
 </head>
 <body>
-<div id="popup">
-
+<div id="ac-wrapper" style='display:none'>
+ <div id="popup">
+	<center>
     <!-- and here comes the image -->
     <img src="pages/assets/steven.jpeg" alt="popup">
 
         <!-- Now this is the button which closes the popup-->
         <button id="close">Close button</button>
-
+	</center>
         <!-- and finally we close the POPUP FRAME-->
         <!-- everything on it will show up within the popup so you can add more things not just an image -->
+ </div>
 </div>
-
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <frameset rows="20%,7%,67%,10%,*" border="0">
@@ -27,22 +28,19 @@
 </frameset>
 </body>
 </html> 
-<script>
-	//with this first line we're saying: "when the page loads (document is ready) run the following script"
-$(document).ready(function () {
 
-    //select the POPUP FRAME and show it
-    $("#popup").hide().fadeIn(1000);
-
-    //close the POPUP if the button with id="close" is clicked
-    $("#close").on("click", function (e) {
-        e.preventDefault();
-        $("#popup").fadeOut(1000);
-    });
-
-});
-	
+<script type="text/javascript">
+function PopUp(hideOrshow) {
+    if (hideOrshow == 'hide') document.getElementById('ac-wrapper').style.display = "none";
+    else document.getElementById('ac-wrapper').removeAttribute('style');
+}
+window.onload = function () {
+    setTimeout(function () {
+        PopUp('show');
+    }, 5000);
+}
 </script>
+
 
 <style> 
 /*we need to style the popup with CSS so it is placed as a common popup does*/
